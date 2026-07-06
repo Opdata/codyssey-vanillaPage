@@ -1,0 +1,41 @@
+:root {
+  --bg: #ffffff;
+  --surface: #f5f5f3;
+  --text: #14140f;
+  --muted: #6d6d66;
+  --border: #e6e6e1;
+  --inverse: #14140f;
+  --inverse-text: #ffffff;
+  --field: #ffffff;
+}
+
+[data-theme='dark'] {
+  --bg: #0c0c0a;
+  --surface: #161613;
+  --text: #f3f3ee;
+  --muted: #9a9a91;
+  --border: #292924;
+  --inverse: #f3f3ee;
+  --inverse-text: #0c0c0a;
+  --field: #131310;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  transition:
+    background 0.3s,
+    color 0.3s;
+}
+
+#theme-toggle::before {
+  content: 'Dark';
+}
+
+[data-theme='dark'] #theme-toggle::before {
+  content: 'Light';
+}
+
+section {
+  min-height: 100dvh;
+}
