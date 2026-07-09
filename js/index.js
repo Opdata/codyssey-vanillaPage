@@ -4,6 +4,7 @@ const systemDark = window.matchMedia('(prefers-color-scheme: dark)');
 const header = document.querySelector('header');
 const navbar = document.querySelector('.navbar');
 const scrollTopBtn = document.querySelector('#scroll-top');
+const burgerBtn = document.querySelector('.burger');
 
 const applyTheme = (theme) => {
   if (theme === 'dark') {
@@ -38,6 +39,20 @@ const nav = document.querySelectorAll('.navbar a').forEach((link) => {
     const target = document.querySelector(link.getAttribute('href'));
     target.scrollIntoView({ behavior: 'smooth' });
   });
+});
+
+burgerBtn.addEventListener('click', (e) => {
+  navbar.classList.toggle('active');
+});
+
+document.addEventListener('click', (e) => {
+  if (
+    navbar.classList.contains('active') &&
+    !navbar.contains(e.target) &&
+    !burgerBtn.contains(e.target)
+  ) {
+    navbar.classList.remove('active');
+  }
 });
 
 const handleScroll = () => {

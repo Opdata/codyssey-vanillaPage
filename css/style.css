@@ -30,18 +30,85 @@ body {
 
 header {
   position: sticky;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 69px;
   top: 0;
   z-index: 10;
+  /* border-bottom: 1px solid var(--border); */
+  transition:
+    background 0.3s,
+    box-shadow 0.3s,
+    border-color 0.3s;
+  padding: 0 20px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
 .navbar {
-  background: transparent;
+  background: var(--bg);
   border-bottom: 1px solid transparent;
   transition:
     background 0.3s,
     box-shadow 0.3s,
     border-color 0.3s,
     backdrop-filter 0.3s;
+}
+
+.navbar ul {
+  display: flex;
+  gap: 20px;
+  color: var(--muted);
+}
+
+.logo-anchor {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  background: var(--text);
+  border-radius: 50%;
+}
+
+.site-title {
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 500;
+  font-size: 15px;
+  letter-spacing: 0.02em;
+  color: var(--text);
+}
+
+#theme-toggle {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  font-weight: 500;
+  color: var(--text);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  min-width: 72px;
+  padding: 7px 13px;
+  text-align: center;
+  cursor: pointer;
+  transition:
+    border-color 0.2s,
+    background 0.2s;
+}
+
+.burger {
+  font-size: 22px;
+  color: var(--text);
 }
 
 .navbar.scrolled {
@@ -83,4 +150,69 @@ section {
 #scroll-top.visible {
   opacity: 1;
   visibility: visible;
+}
+
+@media screen and (max-width: 767px) {
+  .navbar {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    display: flex;
+    max-height: 0;
+    padding: 0 24px;
+    background: transparent;
+    transition:
+      background 0.3s,
+      box-shadow 0.3s,
+      border-color 0.3s,
+      backdrop-filter 0.3s,
+      max-height 0.3s ease,
+      padding 0.3s ease;
+    overflow: hidden;
+  }
+
+  .navbar.active {
+    display: flex;
+    max-height: 320px;
+    padding: 10px 24px 20px;
+    background: var(--bg);
+    border-bottom-color: var(--border);
+  }
+
+  header:has(.navbar.active) {
+    border-bottom-color: transparent;
+  }
+
+  .navbar ul {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .navbar li {
+    padding: 8px 4px;
+    font-size: 14.5px;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  header {
+    padding: 0 30px;
+  }
+
+  .navbar {
+    display: flex;
+  }
+
+  .burger {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  header {
+    padding: 0 40px;
+  }
 }
