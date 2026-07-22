@@ -2,3 +2,9 @@ plan.md
 mission.md
 README.md
 theory.md
+node_modules
+package.json
+package-lock.json
+eslint.config.mjs
+design-dark.html
+design-light.html
