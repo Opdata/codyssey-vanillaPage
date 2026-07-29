@@ -199,7 +199,7 @@ const renderProjects = () => {
   });
 
   const gridEl = projectsContent.querySelector('.repo-grid');
-  shown.forEach((repo) => gridEl.appendChild(createCard(repo)));
+  gridEl.append(...shown.map((repo) => createCard(repo)));
 };
 
 const loadProjects = async () => {
